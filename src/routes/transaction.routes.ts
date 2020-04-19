@@ -21,13 +21,6 @@ transactionRouter.get('/', (request, response) => {
 transactionRouter.post('/', (request, response) => {
   try {
     const { title, value, type } = request.body;
-    const getBalance = transactionsRepository.getBalance();
-
-    if (type === 'outcome' && value > getBalance.total) {
-      return response.status(400).json({
-        error: 'O valor outcome não pode ser superior do valor total!',
-      });
-    }
 
     const createTransaction = new CreateTransactionService(
       transactionsRepository,

@@ -27,15 +27,13 @@ class TransactionsRepository {
     let income = 0;
     let outcome = 0;
 
-    if (this.transactions.length > 0) {
-      income = this.transactions.reduce((sum, transaction) => {
-        return transaction.type === 'income' ? sum + transaction.value : sum;
-      }, 0);
+    income = this.transactions.reduce((sum, transaction) => {
+      return transaction.type === 'income' ? sum + transaction.value : sum;
+    }, 0);
 
-      outcome = this.transactions.reduce((sum, transaction) => {
-        return transaction.type === 'outcome' ? sum + transaction.value : sum;
-      }, 0);
-    }
+    outcome = this.transactions.reduce((sum, transaction) => {
+      return transaction.type === 'outcome' ? sum + transaction.value : sum;
+    }, 0);
 
     const balance = {
       income,
